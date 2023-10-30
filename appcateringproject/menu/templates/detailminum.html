@@ -1,0 +1,14 @@
+{% extends 'base.html'%} {% block content %}
+<div class="card m-3">
+  <img alt="" class="card-img-top" src="{{ minuman.gambar.url }}" />
+  <div class="card-body">
+    <h5 class="card-title fw-bold">
+      {{ minuman.nama }} | Harga : Rp{{ minuman.harga }}
+    </h5>
+    <p class="card-text">
+      {{ minuman.keterangan }}
+      <br />
+    </p>
+  </div>
+</div>
+{% endblock content %}

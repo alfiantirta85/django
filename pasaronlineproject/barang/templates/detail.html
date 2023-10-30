@@ -1,0 +1,20 @@
+{% extends 'base.html'%} {% block content %}
+<div class="card m-3">
+  <img alt="" class="card-img-top" src="{{ barang.gambar.url }}" />
+  <div class="card-body">
+    <h5 class="card-title fw-bold">
+      {{ barang.nama }} | Harga : Rp{{ barang.harga }}
+    </h5>
+    <p class="card-text">
+      {{ barang.keterangan }}
+      <br />
+    </p>
+    <form method="post" action="{% url 'add_to_cart' barang.id %}">
+      {% csrf_token %}
+      <label for="quantity">Jumlah Pesanan:</label>
+      <input type="number" name="quantity" id="quantity" value="1" min="1" />
+      <button type="submit" class="btn btn-success">Pesan</button>
+    </form>
+  </div>
+</div>
+{% endblock content %}

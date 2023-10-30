@@ -1,0 +1,35 @@
+{% extends 'base.html'%} {% block content %}
+<div class="container">
+  <form action="">
+    <div class="mb-3">
+      <label class="form-label">Cari Barang:</label>
+      <input type="text" name="nama" class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-primary">Search</button>
+  </form>
+  {% if searchBarang %} Pencarian untuk <strong>{{ searchBarang }}</strong>
+  {% endif %}
+  <br />
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    {% for barang in barangs %}
+    <div class="col">
+      <div class="card">
+        <img alt="" class="card-img-top" src="{{ barang.gambar.url }}" />
+        <div class="card-body">
+          <h5 class="card-title fw-bold">
+            {{ barang.nama }} | Rp{{ barang.harga }}
+          </h5>
+          <p class="card-text">
+            Stok : {{ barang.stok }}
+            <br />
+            <a href="{% url 'detail' barang.id %}" class="text-decoration-none">
+              <h5 class="card-title fw-bold">Detail</h5>
+            </a>
+          </p>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock content %}

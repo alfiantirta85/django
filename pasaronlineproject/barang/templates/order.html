@@ -1,0 +1,26 @@
+{% extends 'base.html'%} {% block content %}
+<p>Nama Pemesan : {{ nama }}</p>
+<p>Nomor Pemesan : {{ telp }}</p>
+<table class="table table-bordered">
+  <label class="form-label">Pesanan :</label>
+  <thead class="table-dark">
+    <tr>
+      <th>Item</th>
+      <th>Harga</th>
+      <th>Jumlah</th>
+      <th>Sub Total</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for item in cart_items %}
+    <tr>
+      <td>{{ item.barang.nama }}</td>
+      <td>{{ item.barang.harga }}</td>
+      <td>{{ item.quantity }}</td>
+      <td>Rp{{ item.item_total }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+<p>Total : Rp{{ total_price }}</p>
+{% endblock content %}
